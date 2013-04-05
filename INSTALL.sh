@@ -6,7 +6,11 @@ mkdir -p ~/Pictures/Screenshots/Downscaled
 defaults write com.apple.screencapture location ~/Pictures/Screenshots/
 
 # I hate those drop shadows!
-read -p "While we're at it, would you like to disable the shadows on window screen shots? [y/N] "
+if [[ $1 == '-y' ]]; then
+    REPLY=y
+else
+    read -p "While we're at it, would you like to disable the shadows on window screen shots? [y/N] "
+fi
 [[ $REPLY =~ [yY].* ]] && defaults write com.apple.screencapture disable-shadow -bool true
 
 # Restart the UI just for good measure

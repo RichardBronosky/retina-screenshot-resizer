@@ -3,26 +3,35 @@ retina-screenshot-resizer
 
 Automatic duplication and downsizing of the comically large MacBookPro Retina screenshots
 
-___Notice:___ Your screenshots will no longer appear on your _Desktop_ after this.
-
-Concept
--------
-
-1. Change default screenshot location to ~/Pictures/Screenshots (because you don't want folder actions on your desktop)
-2. Use the Automator actions seen below to put resized images in ~/Pictures/Screenshots/Downscaled
-
-![AppleScript icon](https://raw.github.com/RichardBronosky/retina-screenshot-resizer/master/Downscale%20Screenshots.workflow/Contents/QuickLook/Preview.png)
+![Automator Preview](https://raw.github.com/RichardBronosky/retina-screenshot-resizer/master/Downscale%20Screenshots.workflow/Contents/QuickLook/Preview.png)
 
 Installation
 ------------
 
-    # Do either of these methods to acquire the source:
-    git clone https://github.com/RichardBronosky/retina-screenshot-resizer.git
-    # ...or if you don't have git (are not a developer)...
-    curl -o retina-screenshot-resizer.zip https://github.com/RichardBronosky/retina-    screenshot-resizer/archive/master.zip
-    unzip retina-screenshot-resizer.zip
+Just double-click the…
 
-    # Run the install script
-    retina-screenshot-resizer/INSTALL.sh
+![Automator Icon](http://i.imgur.com/hRLT1BA.png)Downscale Screenshots
 
-    # That's all there is to it.
+…file.
+
+It will prompt you to Install or Open.
+
+![Open Dialog](http://i.imgur.com/buPjoqC.png)
+
+If you choose Install it will then process all Screenshots that land on the Desktop. 
+
+Bonus
+-----
+If you do not like having drop shadows applied to the window screenshots you take (accomplished via CMD+Shift+4 then Spacebar) you can disable them via the Terminal with:
+
+    defaults write com.apple.screencapture disable-shadow -bool true
+    killall SystemUIServer
+
+- - -
+
+If you would like to change the location where your screenshots are saved, create a folder like `$HOME/Pictures/Screenshots` then change the configuration via the Terminal with:
+
+    defaults write com.apple.screencapture location ~/Pictures/Screenshots/
+    killall SystemUIServer
+
+You then have to Choose the "Open with Automator" button from the dialog shown above. Then change the "Folder Action receives files and folders added to `Desktop`" to what ever location you chose.
